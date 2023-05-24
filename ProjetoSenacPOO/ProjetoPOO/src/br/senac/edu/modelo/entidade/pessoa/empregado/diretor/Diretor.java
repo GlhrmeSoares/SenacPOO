@@ -6,7 +6,7 @@ import br.senac.edu.modelo.enumeracao.gestor.Status;
 
 public class Diretor extends Empregado implements Gestor{
 
-	protected Diretor(String nome, byte idade, String cpf, float valorHora,String ctps, Status status) {
+	public Diretor(String nome, byte idade, String cpf, String ctps,float valorHora, Status status) {
 		super(nome, idade, cpf, ctps,valorHora, status);
 	}
 
