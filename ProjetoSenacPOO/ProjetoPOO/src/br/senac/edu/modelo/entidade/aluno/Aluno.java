@@ -1,14 +1,26 @@
-package br.senac.edu.modelo.entidade.aluno;
+package br.senac.edu.modelo.entidade.pessoa.aluno;
 
-public class Aluno {
-	private String nome;
-	private byte idade;
-	private String cpf;
+import br.senac.edu.modelo.entidade.pessoa.Pessoa;
+import br.senac.edu.modelo.entidade.pessoa.turma.Turma;
+import br.senac.edu.modelo.enumeracao.pessoa.aluno.Status;
+
+public class Aluno extends Pessoa{
+	private String matricula;
+	private Turma turma;
+	private Status status;
 	
-	public Aluno(String nome, byte idade, String cpf) {
-		this.setNome(nome);
-		this.setIdade(idade);
-		this.setCpf(cpf);
+	public Aluno(String nome, byte idade, String cpf, Turma turma,String matricula, Status status) {
+		super(nome,idade,cpf);
+		this.setTurma(turma);
+		this.setMatricula(matricula);
+		this.setStatus(status);
+	}
+	
+	public Aluno(String nome, byte idade, String cpf, Turma turma,String matricula) {
+		super(nome,idade,cpf);
+		this.setTurma(turma);
+		this.setMatricula(matricula);
+		this.setStatus(Status.MATRICULADO);
 	}
 	
 	public void responderChamada() {
@@ -16,26 +28,31 @@ public class Aluno {
 	}
 	
 	public String toString() {
-		return ("Aluno: "+this.nome+"\nIdade: " + this.idade+"\nCPF: "+this.cpf);
-	}
+		return ("Aluno: "+getNome()+"\nIdade: " + getIdade()+"\nCPF: "+getCpf()+"\nMatéria: "+getTurma().getMateria()+"\nMatricula: "+getMatricula() + "\nStatus: "+getStatus());
+	}	
 	
-	public String getNome() {
-		return nome;
+	public String getMatricula() {
+		return matricula;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
-	public byte getIdade() {
-		return idade;
+
+	public Turma getTurma() {
+		return turma;
 	}
-	public void setIdade(byte idade) {
-		this.idade = idade;
+
+	public Status getStatus() {
+		return status;
 	}
-	public String getCpf() {
-		return cpf;
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
 	
 }
